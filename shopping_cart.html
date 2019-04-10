@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+  <body>
+    <div class="mainWrapper">
+      <header class="header container">
+        <a href="#">
+          <div class="headerLogo">
+            BRAN<span>D</span>
+          </div>
+        </a>
+        <div class="headerSearchWrapper">
+          <div class="searchBrowse">
+            <span>Browse &nbsp;<i class="fas fa-caret-down"></i></span>
+            <div class="headerDropDown">
+              <div class="dropDownWomen">
+                WOMEN
+              </div>
+              <ul>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Sweaters/Knits</a></li>
+                <li><a href="#">Jackets/Coats</a></li>
+                <li><a href="#">Blazers</a></li>
+                <li><a href="#">Denim</a></li>
+                <li><a href="#">Leggings/Pants</a></li>
+                <li><a href="#">Skirts/Shorts</a></li>
+                <li><a href="#">Accessories</a></li>
+              </ul>
+              <div class="dropDownMen">
+                MEN
+              </div>
+              <ul>
+                <li><a href="#">Tees/Tank tops</a></li>
+                <li><a href="#">Shirts/Polos</a></li>
+                <li><a href="#">Sweaters</a></li>
+                <li><a href="#">Sweatshirts/Hoodies</a></li>
+                <li><a href="#">Blazers</a></li>
+                <li><a href="#">Jackets/Vests</a></li>
+              </ul>
+            </div>
+          </div>
+          <input type="text" value="" placeholder="Search for Item...">
+          <button class="searchBtn" type="button" name="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <div class="headerCart">
+          <div class="cartDropDownWrapper">
+            <div class="cartDropDown">
+              <div class="dropDownProduct">
+                <img src="img/cartProduct1.jpg" alt="cartProduct1s">
+
+                <div class="dropDownProductText">
+                  <h6>REBOX ZANE</h6>
+                  <h6>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </h6>
+                  <h6>1 x $250</h6>
+                </div>
+
+                <a href="#"><i class="fas fa-times-circle"></i></a>
+              </div>
+
+              <div class="dropDownProduct">
+                <img src="img/cartProduct2.jpg" alt="cartProduct1s">
+
+                <div class="dropDownProductText">
+                  <h6>REBOX ZANE</h6>
+                  <h6>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </h6>
+                  <h6>1 x $250</h6>
+                </div>
+
+                <a href="#"><i class="fas fa-times-circle"></i></a>
+              </div>
+
+              <div class="dropDownTotal">
+                <h3>TOTAL</h3>
+                <h3>$500.00</h3>
+              </div>
+
+              <button class="dropDownCheckout" type="button" name="button">CHECKOUT</button>
+
+              <button class="dropDownToCart" type="button" name="button">GO TO CART</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="headerMyAccount" type="button" name="button">
+          My Account &nbsp;<i class="fas fa-caret-down"></i>
+        </button>
+      </header>
+
+      <nav class="nav container">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li>
+            <a href="#">MEN</a>
+            <div class="navDropDown">
+              <div class="dropDownWomen">
+                WOMEN
+              </div>
+              <ul>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Sweaters/Knits</a></li>
+                <li><a href="#">Jackets/Coats</a></li>
+                <li><a href="#">Blazers</a></li>
+                <li><a href="#">Denim</a></li>
+                <li><a href="#">Leggings/Pants</a></li>
+                <li><a href="#">Skirts/Shorts</a></li>
+                <li><a href="#">Accessories</a></li>
+              </ul>
+
+              <div class="dropDownWomen">
+                WOMEN
+              </div>
+              <ul>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Sweaters/Knits</a></li>
+                <li><a href="#">Jackets/Coats</a></li>
+              </ul>
+
+              <div class="dropDownWomen">
+                WOMEN
+              </div>
+              <ul>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Sweaters/Knits</a></li>
+              </ul>
+
+              <div class="dropDownWomen">
+                WOMEN
+              </div>
+              <ul>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Sweaters/Knits</a></li>
+                <li><a href="#">Jackets/Coats</a></li>
+              </ul>
+
+              <a href="#">
+                <div class="dropDownSale">
+                  <h3>SUPER <br> SALE!</h3>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="#">WOMEN</a></li>
+          <li><a href="#">KIDS</a></li>
+          <li><a href="#">ACCESORIES</a></li>
+          <li><a href="#">FEATURED</a></li>
+          <li><a href="#">HOT DEALS</a></li>
+        </ul>
+      </nav>
+
+      <div class="arrivals">
+        <div class="arrivalsWrapper container">
+          <h1>NEW ARRIVALS</h1>
+          <h3><a href="#">HOME</a> / <a href="#">MEN</a> / <span>NEW ARRIVALS</span>
+          </h3>
+        </div>
+      </div>
+
+      <main>
+        <div class="productGrid container">
+          <div class="productGridCell productGridTableHeader">
+            <h3>PRODUCT DETAILS</h3>
+            <h3>UNIT PRICE</h3>
+            <h3>QUANTITY</h3>
+            <h3>SHIPPING</h3>
+            <h3>SUBTOTAL</h3>
+            <h3>ACTION</h3>
+          </div>
+
+          <div class="productGridCell productGridTableRow">
+            <div class="productGridDetails first">
+              <h5>MANGO PEOPLE T-SHIRT</h5>
+              <h6>Color: &nbsp;<span>Red</span></h6>
+              <h6>Size: &nbsp;<span>Xll</span></h6>
+            </div>
+
+            <h5>$150</h5>
+            <input type="number" name="quantity" value="2">
+            <h5>FREE</h5>
+            <h5>$300</h5>
+            <a href="#"><i class="fas fa-times-circle"></i></a>
+          </div>
+
+          <div class="productGridCell productGridTableRow">
+            <div class="productGridDetails second">
+              <h5>MANGO PEOPLE T-SHIRT</h5>
+              <h6>Color: &nbsp;<span>Red</span></h6>
+              <h6>Size: &nbsp;<span>Xll</span></h6>
+            </div>
+
+            <h5>$150</h5>
+            <input type="number" name="quantity" value="2">
+            <h5>FREE</h5>
+            <h5>$300</h5>
+            <a href="#"><i class="fas fa-times-circle"></i></a>
+          </div>
+
+          <div class="productGridCell productGridTableRow">
+            <div class="productGridDetails third">
+              <h5>MANGO PEOPLE T-SHIRT</h5>
+              <h6>Color: &nbsp;<span>Red</span></h6>
+              <h6>Size: &nbsp;<span>Xll</span></h6>
+            </div>
+
+            <h5>$150</h5>
+            <input type="number" name="quantity" value="2">
+            <h5>FREE</h5>
+            <h5>$300</h5>
+            <a href="#"><i class="fas fa-times-circle"></i></a>
+          </div>
+        </div>
+
+        <div class="shoppingCartButtons container">
+          <button type="button" name="button">CLEAR SHOPPING CART</button>
+          <button type="button" name="button">CONTINUE SHOPPING</button>
+        </div>
+
+        <div class="shoppingCartCheckout container">
+          <div class="shoppingCartShippingAddress">
+            <h3>SHIPPING ADDRESS</h3>
+            <select class="countrySelector" name="countrySelector">
+              <option value="Bangladesh">Bangladesh</option>
+            </select>
+            <input type="text" name="stateInput" value="" placeholder="State">
+            <input type="number" name="zipcodeInput" value="" placeholder="Postcode / Zip">
+            <button type="button" name="button">GET A QUOTE</button>
+          </div>
+
+          <div class="shoppingCartCoupon">
+            <h3>COUPON DISCOUNT</h3>
+            <p>Enter your coupon code if you have one</p>
+            <input type="text" name="couponInput" value="" placeholder="State">
+            <button type="button" name="button">APPLY COUPON</button>
+          </div>
+
+          <div class="shoppingCartCheckoutBlock">
+            <h5>SUB TOTAL &nbsp;&nbsp;&nbsp;&nbsp;$900</h5>
+            <h3>GRAND TOTAL &nbsp;&nbsp;&nbsp;&nbsp;<span>$900</span></h3>
+            <button type="button" name="button">PROCEED TO CHECKOUT</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+    <div class="footerWrapper">
+      <div class="bottomBanner">
+        <div class="container bottomBannerWrapper">
+          <div class="bottomBannerLeft">
+            <div class="bottomQuoteWrapper">
+              <blockquote>
+                &ldquo;Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium&rdquo;
+              </blockquote>
+              <h5>Bin Burhan</h5>
+              <h6>Dhaka, Bd</h6>
+              <div class="carouselIndicators">
+                <div class="carouselIndicator"></div>
+                <div class="carouselIndicator"></div>
+                <div class="carouselIndicator"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bottomBannerMiddle"></div>
+          <div class="bottomBannerRight">
+            <div class="bottomSubscribeWrapper">
+              <h2>SUBSCRIBE</h2>
+              <h3>FOR OUR NEWLETTER AND PROMOTION</h3>
+              <div class="bottomSubscribeInput">
+                <input type="email" value="" placeholder="Enter Your Email">
+                <button type="button" name="button">Subscribe</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer container">
+        <div class="footerAbout">
+          <div class="footerLogo">
+            BRAN<span>D</span>
+          </div>
+          <p>
+            Objectively transition extensive data rather than cross functional solutions. Monotonectally syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships.
+          </p>
+          <p>
+            Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.
+          </p>
+        </div>
+        <div class="footerFlexContainer">
+          <div class="footerFlexChild">
+            <h3>COMPANY</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">How It Works</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footerFlexChild">
+            <h3>INFORMATION</h3>
+            <ul>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">How to Buy</a></li>
+              <li><a href="#">How to Sell</a></li>
+              <li><a href="#">Promotion</a></li>
+            </ul>
+          </div>
+          <div class="footerFlexChild">
+            <h3>SHOP CATEGORY</h3>
+            <ul>
+              <li><a href="#">Men</a></li>
+              <li><a href="#">Women</a></li>
+              <li><a href="#">Child</a></li>
+              <li><a href="#">Apparel</a></li>
+              <li><a href="#">Browse All</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
+      <div class="copyright">
+        <div class="copyrightWrapper container">
+          <p>© 2017  Brand  All Rights Reserved.</p>
+          <div class="copyrightSocNet">
+            <a href="#">
+              <div class="copyrightSocNetBox">
+                <i class="fab fa-facebook-f"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="copyrightSocNetBox">
+                <i class="fab fa-twitter"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="copyrightSocNetBox">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="copyrightSocNetBox">
+                <i class="fab fa-pinterest-p"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="copyrightSocNetBox">
+                <i class="fab fa-google-plus-g"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
