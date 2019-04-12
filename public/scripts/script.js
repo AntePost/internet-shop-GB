@@ -40,7 +40,7 @@ Vue.component('review', {
   template: `
               <div class="reviewsWrapper container">
                 <h2>REVIEWS</h2>
-                <div class="review" v-for="reviewItem in reviews">
+                <div class="review" v-for="reviewItem in approvedReviews">
                   <blockquote>
                     {{ reviewItem.text }}
                   </blockquote>
@@ -63,6 +63,11 @@ Vue.component('review', {
       message: null,
     }
   },
+  computed: {
+    approvedReviews() {
+      return this.reviews.filter(el => el.approved);
+    }
+  },
   methods: {
     handleAddReviewClick() {
       fetch(API_URL + '/reviews', {
@@ -70,13 +75,59 @@ Vue.component('review', {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ author: this.author, text: this.text }),
+        body: JSON.stringify({ author: this.author, text: this.text, approved: false }),
       })
         .then(response => response.json())
         .then(serverReviewItem => this.message = 'You comment has been added and is awaiting moderation');
     },
   },
 });
+
+Vue.component('moderate-reviews', {
+  props: ['reviews'],
+  template: `
+              <div class="reviewModeration container">
+                <h2>REVIEW MODERATION</h2>
+                <div class="review" v-for="reviewItem in unmoderatedReviews">
+                  <blockquote>
+                    {{ reviewItem.text }}
+                  </blockquote>
+                  <h5>{{ reviewItem.author }}</h5>
+                  <button type="button" name="button" @click="handleApproveReviewClick(reviewItem)">Approve</button>
+                  <button type="button" name="button" @click="handleDeleteReviewClick(reviewItem)">Delete</button>
+                </div>
+                <p v-if="unmoderatedReviews.length === 0">There are no reviews to moderate</p>
+              </div>
+            `,
+  computed: {
+    unmoderatedReviews() {
+      return this.reviews.filter(el => !el.approved);
+    }
+  },
+  methods: {
+    handleApproveReviewClick(reviewItem) {
+      fetch(API_URL + '/reviews/' + reviewItem.id, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ approved: true })
+      })
+        .then(response => response.json())
+        .then(serverReviewItem => {
+          this.$emit('onapprove', serverReviewItem);
+        });
+    },
+    handleDeleteReviewClick(reviewItem) {
+      fetch(API_URL + '/reviews/' + reviewItem.id, {
+        method: 'DELETE',
+      })
+        .then(() => {
+          this.$emit('ondelete', reviewItem);
+        });
+    },
+  }
+})
 
 const app = new Vue({
   el: '#app',
@@ -178,9 +229,16 @@ const app = new Vue({
           method: 'DELETE'
         })
           .then(() => {
-            this.cart = this.cart.filter(el => el.id !== cartItem.id)
+            this.cart = this.cart.filter(el => el.id !== cartItem.id);
           });
       }
+    },
+    handleOnApproveReview(reviewItem) {
+      const itemIdx = this.reviews.findIndex(el => el.id === reviewItem.id);
+      Vue.set(this.reviews, itemIdx, reviewItem);
+    },
+    handleOnDeleteReview(reviewItem) {
+      this.reviews = this.reviews.filter(el => el.id !== reviewItem.id);
     }
   },
 });

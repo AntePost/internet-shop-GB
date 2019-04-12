@@ -46,12 +46,32 @@
     {
       "id": 1,
       "author": "John",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "approved": true
     },
     {
       "id": 2,
       "author": "Jack",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "approved": true
+    },
+    {
+      "author": "sdfdsf",
+      "text": "dsfsdfsd",
+      "approved": true,
+      "id": 3
+    },
+    {
+      "author": "dfsfd",
+      "text": "sdbfbvbc",
+      "approved": true,
+      "id": 4
+    },
+    {
+      "author": "cvbbcv",
+      "text": "ghjhgjgh",
+      "approved": true,
+      "id": 5
     }
   ]
 }
