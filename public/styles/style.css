@@ -1380,6 +1380,71 @@ html body .footerWrapper {
   position: relative;
   left: 5px;
 }
+.reviewsWrapper {
+  margin-top: -50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.reviewsWrapper h2 {
+  color: #4d4d4d;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+.reviewsWrapper .review {
+  background: url('../img/face.png') no-repeat;
+  width: 497px;
+  padding-left: 111px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.reviewsWrapper .review blockquote {
+  color: #222224;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 26px;
+  letter-spacing: 0.4px;
+  margin-bottom: 19px;
+}
+.reviewsWrapper .review h5 {
+  color: #f16d7f;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+.reviewsWrapper h4 {
+  color: #f16d7f;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  margin-bottom: 20px;
+}
+.reviewsWrapper .addReview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reviewsWrapper .addReview input {
+  width: 390px;
+  height: 45px;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding-left: 10px;
+  margin-bottom: 22.5px;
+}
+.reviewsWrapper .addReview button {
+  width: 100px;
+  padding: 19px 81px 19px 55px;
+  margin-top: 20px;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  color: #4a4a4a;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
 .singlePageAlsoLike {
   margin-top: 33px;
 }

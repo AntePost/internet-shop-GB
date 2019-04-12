@@ -1,24 +1,5 @@
 const API_URL = 'http://localhost:3000';
 
-/*Vue.component('cart', {
-  props: ['cart', 'cart_total'],
-  template: `
-              <div class="cartWrapper">
-                <h3>Cart</h3>
-                <div class="cart" v-if="cart.length">
-                  <p v-for="cartItem in cart">There is {{ cartItem.quantity }} item of {{ cartItem.name }} in the cart with the price of {{ cartItem.price * cartItem.quantity }} <button @click="handleRemoveClick(cartItem)">Remove</button></p>
-                  <p>The sum total of items in the cart - {{ cart_total }}</p>
-                </div>
-                <span v-if="!cart.length">The cart is empty</span>
-              </div>
-            `,
-  methods: {
-    handleRemoveClick(cartItem) {
-      this.$emit('ondelete', cartItem);
-    }
-  }
-});*/
-
 Vue.component('cart', {
   props: ['cart', 'cart_total'],
   template: `
@@ -54,6 +35,49 @@ Vue.component('cart', {
   }
 });
 
+Vue.component('review', {
+  props: ['reviews'],
+  template: `
+              <div class="reviewsWrapper container">
+                <h2>REVIEWS</h2>
+                <div class="review" v-for="reviewItem in reviews">
+                  <blockquote>
+                    {{ reviewItem.text }}
+                  </blockquote>
+                  <h5>{{ reviewItem.author }}</h5>
+                </div>
+
+                <h4>Add review</h4>
+                <form class="addReview" v-if="!message">
+                  <input type="text" name="" v-model="author" placeholder="Your name">
+                  <textarea name="name" rows="8" cols="80" v-model="text" placeholder="Say something"></textarea>
+                  <button type="button" name="button" @click="handleAddReviewClick">Submit</button>
+                </form>
+                <p v-if="message">{{ message }}</p>
+              </div>
+            `,
+  data: function () {
+    return {
+      author: null,
+      text: null,
+      message: null,
+    }
+  },
+  methods: {
+    handleAddReviewClick() {
+      fetch(API_URL + '/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ author: this.author, text: this.text }),
+      })
+        .then(response => response.json())
+        .then(serverReviewItem => this.message = 'You comment has been added and is awaiting moderation');
+    },
+  },
+});
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -61,6 +85,7 @@ const app = new Vue({
     searchQuery: '',
     cart: [],
     responseCode: null,
+    reviews: [],
   },
   mounted() {
     fetch(API_URL + '/products')
@@ -78,6 +103,10 @@ const app = new Vue({
     fetch(API_URL + '/cart')
       .then(response => response.json())
       .then(cartItems => this.cart = cartItems);
+
+    fetch(API_URL + '/reviews')
+      .then(response => response.json())
+      .then(reviewItems => this.reviews = reviewItems);
   },
   computed: {
     filteredItems() {

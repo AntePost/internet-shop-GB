@@ -41,5 +41,17 @@
       "price": 80
     }
   ],
-  "cart": []
+  "cart": [],
+  "reviews": [
+    {
+      "id": 1,
+      "author": "John",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "id": 2,
+      "author": "Jack",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ]
 }
