@@ -185,26 +185,7 @@
 
       <main>
         <div class="ShippingAddressFlexContainer container">
-          <div class="ShippingAddressRegister">
-            <h5>REGISTER</h5>
-            <p>Register with us for future convenience</p>
-
-            <form>
-              <label for="ShippingAddressRegisterEmail">
-                LOGIN<span>*</span>
-              </label>
-              <input id="ShippingAddressRegisterEmail" required type="email" name="ShippingAddressLogInEmail" value="">
-
-              <label for="ShippingAddressRegisterPassword">
-                PASSWORD <span>*</span>
-              </label>
-              <input id="ShippingAddressRegisterPassword" required type="password" name="ShippingAddressLogInPassword" value="">
-
-              <p>* Required Fileds</p>
-
-              <button type="button" name="button">REGISTER</button>
-            </form>
-          </div>
+          <register></register>
 
           <log-in :authorized="authorized" @onlogin="handleOnLogin" v-if="!authorized"></log-in>
           <log-out :authorized="authorized" @onlogout="handleOnLogout" v-if="authorized"></log-out>

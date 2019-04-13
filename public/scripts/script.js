@@ -140,7 +140,7 @@ Vue.component('log-in', {
                   <label for="ShippingAddressLogInEmail">
                     LOGIN<span>*</span>
                   </label>
-                  <input id="ShippingAddressLogInEmail" required type="email" name="ShippingAddressLogInEmail" v-model="username">
+                  <input id="ShippingAddressLogInEmail" required type="text" name="ShippingAddressLogInEmail" v-model="username">
 
                   <label for="ShippingAddressLogInPassword">
                     PASSWORD <span>*</span>
@@ -167,11 +167,10 @@ Vue.component('log-in', {
     handleLoginCLick() {
       fetch(API_URL + '/auth' + '?username=' + this.username + '&password=' + this.password)
         .then(response => response.json())
-        .then(user => {
-          if (user.length === 0) {
+        .then(users => {
+          if (users.length === 0) {
             this.wrongData = true;
           } else {
-            console.log(user);
             this.$emit('onlogin');
           }
         });
@@ -194,8 +193,69 @@ Vue.component('log-out', {
   methods: {
     handleLogoutCLick() {
       this.$emit('onlogout')
+    },
+  },
+});
+
+Vue.component('register', {
+  template: `
+              <div class="ShippingAddressRegister">
+                <h5>REGISTER</h5>
+                <p>Register with us for future convenience</p>
+
+                <form>
+                  <label for="ShippingAddressRegisterEmail">
+                    LOGIN<span>*</span>
+                  </label>
+                  <input id="ShippingAddressRegisterEmail" required type="text" name="ShippingAddressLogInEmail" v-model="username">
+
+                  <label for="ShippingAddressRegisterPassword">
+                    PASSWORD <span>*</span>
+                  </label>
+                  <input id="ShippingAddressRegisterPassword" required type="password" name="ShippingAddressLogInPassword" v-model="password">
+
+                  <p>* Required Fileds</p>
+                  <p v-if="registerSuccess">You have been successfully registered</p>
+                  <p v-if="takenName">This login has already been taken</p>
+
+                  <button type="button" name="button" @click="handleRegisterClick">REGISTER</button>
+                </form>
+              </div>
+            `,
+  data() {
+    return {
+      username: '',
+      password: '',
+      registerSuccess: false,
+      takenName: false,
     }
-  }
+  },
+  methods: {
+    handleRegisterClick() {
+      this.takenName = false;
+
+      fetch(API_URL + '/auth' + '?username=' + this.username)
+        .then(response => response.json())
+        .then(users => {
+          if (users.length !== 0) {
+            this.takenName = true;
+          } else {
+            this.addNewUser();
+          }
+        });
+    },
+    addNewUser() {
+      fetch(API_URL + '/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: this.username, password: this.password }),
+      })
+        .then(response => response.json())
+        .then(users => this.registerSuccess = true);
+    },
+  },
 });
 
 const app = new Vue({
