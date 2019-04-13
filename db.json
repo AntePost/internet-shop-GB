@@ -54,24 +54,18 @@
       "author": "Jack",
       "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "approved": true
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "username": "John",
+      "password": "12345"
     },
     {
-      "author": "sdfdsf",
-      "text": "dsfsdfsd",
-      "approved": true,
-      "id": 3
-    },
-    {
-      "author": "dfsfd",
-      "text": "sdbfbvbc",
-      "approved": true,
-      "id": 4
-    },
-    {
-      "author": "cvbbcv",
-      "text": "ghjhgjgh",
-      "approved": true,
-      "id": 5
+      "id": 1,
+      "username": "Jack",
+      "password": "12345"
     }
   ]
 }

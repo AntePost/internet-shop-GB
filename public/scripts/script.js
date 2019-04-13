@@ -127,7 +127,76 @@ Vue.component('moderate-reviews', {
         });
     },
   }
-})
+});
+
+Vue.component('log-in', {
+  props: ['authorized'],
+  template: `
+              <div class="ShippingAddressLogIn">
+                <h5>ALREADY REGISTED?</h5>
+                <p>Please log in below</p>
+
+                <form>
+                  <label for="ShippingAddressLogInEmail">
+                    LOGIN<span>*</span>
+                  </label>
+                  <input id="ShippingAddressLogInEmail" required type="email" name="ShippingAddressLogInEmail" v-model="username">
+
+                  <label for="ShippingAddressLogInPassword">
+                    PASSWORD <span>*</span>
+                  </label>
+                  <input id="ShippingAddressLogInPassword" required type="password" name="ShippingAddressLogInPassword" v-model="password">
+
+                  <p>* Required Fileds</p>
+                  <p v-if="wrongData">Wrong login or password</p>
+
+                  <button type="button" name="button" @click="handleLoginCLick">LOG IN</button>
+
+                  <a href="#">Forgot Password ?</a>
+                </form>
+              </div>
+            `,
+  data() {
+    return {
+      username: '',
+      password: '',
+      wrongData: false,
+    }
+  },
+  methods: {
+    handleLoginCLick() {
+      fetch(API_URL + '/auth' + '?username=' + this.username + '&password=' + this.password)
+        .then(response => response.json())
+        .then(user => {
+          if (user.length === 0) {
+            this.wrongData = true;
+          } else {
+            console.log(user);
+            this.$emit('onlogin');
+          }
+        });
+    }
+  }
+});
+
+Vue.component('log-out', {
+  props: ['authorized'],
+  template: `
+              <div class="ShippingAddressLogIn">
+                <h5>YOU ARE LOGGED IN</h5>
+                <p>Press button below to log out</p>
+
+                <form>
+                  <button type="button" name="button" @click="handleLogoutCLick">LOG OUT</button>
+                </form>
+              </div>
+            `,
+  methods: {
+    handleLogoutCLick() {
+      this.$emit('onlogout')
+    }
+  }
+});
 
 const app = new Vue({
   el: '#app',
@@ -137,6 +206,7 @@ const app = new Vue({
     cart: [],
     responseCode: null,
     reviews: [],
+    authorized: false,
   },
   mounted() {
     fetch(API_URL + '/products')
@@ -239,6 +309,12 @@ const app = new Vue({
     },
     handleOnDeleteReview(reviewItem) {
       this.reviews = this.reviews.filter(el => el.id !== reviewItem.id);
-    }
+    },
+    handleOnLogin() {
+      this.authorized = true;
+    },
+    handleOnLogout() {
+      this.authorized = false;
+    },
   },
 });
