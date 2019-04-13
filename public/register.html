@@ -185,7 +185,8 @@
 
       <main>
         <div class="ShippingAddressFlexContainer container">
-          <register></register>
+          <register v-if="!authorized"></register>
+          <change-user-data :current_user="currentUser" @ondatachange="handleOnDataChange" v-if="authorized"></change-user-data>
 
           <log-in :authorized="authorized" @onlogin="handleOnLogin" v-if="!authorized"></log-in>
           <log-out :authorized="authorized" @onlogout="handleOnLogout" v-if="authorized"></log-out>

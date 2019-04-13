@@ -171,7 +171,7 @@ Vue.component('log-in', {
           if (users.length === 0) {
             this.wrongData = true;
           } else {
-            this.$emit('onlogin');
+            this.$emit('onlogin', users[0]);
           }
         });
     }
@@ -181,9 +181,9 @@ Vue.component('log-in', {
 Vue.component('log-out', {
   props: ['authorized'],
   template: `
-              <div class="ShippingAddressLogIn">
+              <div class="ShippingAddressLogOut">
                 <h5>YOU ARE LOGGED IN</h5>
-                <p>Press button below to log out</p>
+                <p>Press the button below to log out</p>
 
                 <form>
                   <button type="button" name="button" @click="handleLogoutCLick">LOG OUT</button>
@@ -258,6 +258,58 @@ Vue.component('register', {
   },
 });
 
+Vue.component('change-user-data', {
+  props: ['current_user'],
+  template: `
+              <div class="ShippingAddressChange">
+                <h5>CHANGE LOGIN DATA</h5>
+                <p>Enter new values in the fields below</p>
+
+                <form>
+                  <label for="ShippingAddressRegisterEmail">
+                    LOGIN<span>*</span>
+                  </label>
+                  <input id="ShippingAddressRegisterEmail" required type="text" name="ShippingAddressLogInEmail" v-model="username">
+
+                  <label for="ShippingAddressRegisterPassword">
+                    PASSWORD <span>*</span>
+                  </label>
+                  <input id="ShippingAddressRegisterPassword" required type="password" name="ShippingAddressLogInPassword" v-model="password">
+
+                  <p>* Required Fileds</p>
+                  <p v-if="changeSuccess">Login data has been successfully changed</p>
+
+                  <button type="button" name="button" @click="handleChangeUserDataClick">REGISTER</button>
+                </form>
+              </div>
+            `,
+  data() {
+    return {
+      username: '',
+      password: '',
+      changeSuccess: false,
+    }
+  },
+  methods: {
+    handleChangeUserDataClick() {
+      this.changeSuccess = false;
+
+      fetch(API_URL + '/auth/' + this.current_user.id, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...this.current_user, username: this.username, password: this.password }),
+      })
+        .then(response => response.json())
+        .then(user => {
+          this.changeSuccess = true;
+          this.$emit('ondatachange', user);
+        });
+    },
+  },
+});
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -267,6 +319,7 @@ const app = new Vue({
     responseCode: null,
     reviews: [],
     authorized: false,
+    currentUser: null,
   },
   mounted() {
     fetch(API_URL + '/products')
@@ -370,11 +423,15 @@ const app = new Vue({
     handleOnDeleteReview(reviewItem) {
       this.reviews = this.reviews.filter(el => el.id !== reviewItem.id);
     },
-    handleOnLogin() {
+    handleOnLogin(user) {
       this.authorized = true;
+      this.currentUser = user;
     },
     handleOnLogout() {
       this.authorized = false;
+    },
+    handleOnDataChange(user) {
+      this.currentUser = user;
     },
   },
 });
