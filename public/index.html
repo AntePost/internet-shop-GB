@@ -220,27 +220,7 @@
         <h2>Featured Items</h2>
         <h5>Shop for items based on what we featured in this week</h5>
 
-        <div class="featuredFlexContainer">
-          <div class="featuredFlexChild" v-for="item in items">
-            <img :src="item.picSrc" alt="product">
-            <div class="featuredProductHover">
-              <button type="button" name="button" @click="handleBuyClick(item)">
-                <span>Add to Cart</span>
-              </button>
-            </div>
-            <div class="featuredProductText">
-              <h3 class="featuredProductName">{{ item.name }}</h3>
-              <h3 class="featuredProductPrice">{{ item.price }}</h3>
-              <h6>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </h6>
-            </div>
-          </div>
-        </div>
+        <featured-products :items="items" @onbuy="handleBuyClick"></featured-products>
 
         <button class="featuredBrowseAll" type="button" name="button">
           Browse All Product

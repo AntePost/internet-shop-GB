@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:3000';
 
 Vue.component('cart', {
-  props: ['cart', 'cart_total'],
+  props: ['cart'],
   template: `
               <div class="productGrid container">
                 <div class="productGridCell productGridTableHeader">
@@ -310,6 +310,89 @@ Vue.component('change-user-data', {
   },
 });
 
+Vue.component('featured-products', {
+  props: ['items'],
+  template: `
+              <div class="featuredFlexContainer">
+                <div class="featuredFlexChild" v-for="item in featuredItems">
+                  <img :src="item.picSrcMain" alt="product">
+                  <div class="featuredProductHover">
+                    <button type="button" name="button" @click="handleBuyClick(item)">
+                      <span>Add to Cart</span>
+                    </button>
+                  </div>
+                  <div class="featuredProductText">
+                    <h3 class="featuredProductName">{{ item.name }}</h3>
+                    <h3 class="featuredProductPrice">\${{ item.price }}.00</h3>
+                    <h6>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            `,
+  computed: {
+    featuredItems() {
+      return this.items.filter(el => el.featured);
+    },
+  },
+  methods: {
+    handleBuyClick(item) {
+      this.$emit('onbuy', item);
+    },
+  },
+});
+
+Vue.component('also-like-items', {
+  props: ['items', 'name_of_item'],
+  template: `
+              <div class="alsoLikeFlexContainer">
+                <div class="alsoLikeFlexChild" v-for="item in alsoLikeItems">
+                  <img :src="item.picSrcAlso" alt="product">
+                  <div class="alsoLikeProductHover">
+                    <button type="button" name="button" @click="handleBuyClick(item)">
+                      <span>Add to Cart</span>
+                    </button>
+                  </div>
+                  <div class="alsoLikeProductText">
+                    <h3 class="alsoLikeProductName">{{ item.name }}</h3>
+                    <h3 class="alsoLikeProductPrice">\${{ item.price }}.00</h3>
+                    <h6>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            `,
+  computed: {
+    // Создает массив похожих товаров по названию
+    alsoLikeItems() {
+      const nameOfItemSplit = this.name_of_item.split(' ');
+      let alsoLikeItems = this.items.filter(el => el.name.includes(nameOfItemSplit[0]));
+      alsoLikeItems = shuffle(alsoLikeItems);
+      alsoLikeItems = alsoLikeItems.slice(0, 4);
+      alsoLikeItems = alsoLikeItems.map((el, i) => {
+        el.picSrcAlso = `img/alsoLikeProduct${i + 1}.jpg`;
+        return el;
+      })
+      return alsoLikeItems;
+    },
+  },
+  methods: {
+    handleBuyClick(item) {
+      this.$emit('onbuy', item);
+    },
+  }
+})
+
 const app = new Vue({
   el: '#app',
   data: {
@@ -329,7 +412,7 @@ const app = new Vue({
       })
       .then(items => {
         this.items = items.map((item, i) => {
-          item.picSrc = `img/product${i + 1}.jpg`;
+          item.picSrcMain = `img/product${i + 1}.jpg`;
           return item;
         });
       });
@@ -435,3 +518,23 @@ const app = new Vue({
     },
   },
 });
+
+// Рандомизирует массив (взято из интернета)
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
