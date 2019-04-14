@@ -183,7 +183,7 @@
       </div>
 
       <main>
-        <cart :cart="cart" :cart_total="cartTotal" @ondelete="handleRemoveClick"></cart>
+        <cart :cart="cart" @ondelete="handleRemoveClick"></cart>
 
         <div class="shoppingCartButtons container">
           <button type="button" name="button">CLEAR SHOPPING CART</button>
@@ -208,11 +208,7 @@
             <button type="button" name="button">APPLY COUPON</button>
           </div>
 
-          <div class="shoppingCartCheckoutBlock">
-            <h5>SUB TOTAL &nbsp;&nbsp;&nbsp;&nbsp;$900</h5>
-            <h3>GRAND TOTAL &nbsp;&nbsp;&nbsp;&nbsp;<span>$900</span></h3>
-            <button type="button" name="button">PROCEED TO CHECKOUT</button>
-          </div>
+          <cart-total :cart="cart"></cart-total>
         </div>
       </main>
 

@@ -26,6 +26,8 @@ Vue.component('cart', {
                   <h5>{{ cartItem.price * cartItem.quantity }}</h5>
                   <a href="#" @click.prevent="handleRemoveClick(cartItem)"><i class="fas fa-times-circle"></i></a>
                 </div>
+
+                <p v-if="cart.length === 0">The cart is empty</p>
               </div>
             `,
   methods: {
@@ -33,6 +35,22 @@ Vue.component('cart', {
       this.$emit('ondelete', cartItem);
     }
   }
+});
+
+Vue.component('cart-total', {
+  props: ['cart'],
+  template: `
+              <div class="shoppingCartCheckoutBlock">
+                <h5>SUB TOTAL &nbsp;&nbsp;&nbsp;&nbsp;\${{ cartTotal }}</h5>
+                <h3>GRAND TOTAL &nbsp;&nbsp;&nbsp;&nbsp;<span>\${{ cartTotal }}</span></h3>
+                <button type="button" name="button">PROCEED TO CHECKOUT</button>
+              </div>
+            `,
+  computed: {
+    cartTotal() {
+      return this.cart.reduce((acc, cur) => acc + cur.quantity * cur.price, 0);
+    }
+  },
 });
 
 Vue.component('review', {
@@ -267,19 +285,19 @@ Vue.component('change-user-data', {
 
                 <form>
                   <label for="ShippingAddressRegisterEmail">
-                    LOGIN<span>*</span>
+                    NEW LOGIN<span>*</span>
                   </label>
                   <input id="ShippingAddressRegisterEmail" required type="text" name="ShippingAddressLogInEmail" v-model="username">
 
                   <label for="ShippingAddressRegisterPassword">
-                    PASSWORD <span>*</span>
+                    NEW PASSWORD <span>*</span>
                   </label>
                   <input id="ShippingAddressRegisterPassword" required type="password" name="ShippingAddressLogInPassword" v-model="password">
 
                   <p>* Required Fileds</p>
                   <p v-if="changeSuccess">Login data has been successfully changed</p>
 
-                  <button type="button" name="button" @click="handleChangeUserDataClick">REGISTER</button>
+                  <button type="button" name="button" @click="handleChangeUserDataClick">CHANGE DATA</button>
                 </form>
               </div>
             `,
@@ -397,19 +415,14 @@ const app = new Vue({
   el: '#app',
   data: {
     items: [],
-    searchQuery: '',
     cart: [],
-    responseCode: null,
     reviews: [],
     authorized: false,
     currentUser: null,
   },
   mounted() {
     fetch(API_URL + '/products')
-      .then(response => {
-        this.responseCode = response.status;
-        return response.json();
-      })
+      .then(response => response.json())
       .then(items => {
         this.items = items.map((item, i) => {
           item.picSrcMain = `img/product${i + 1}.jpg`;
@@ -424,15 +437,6 @@ const app = new Vue({
     fetch(API_URL + '/reviews')
       .then(response => response.json())
       .then(reviewItems => this.reviews = reviewItems);
-  },
-  computed: {
-    filteredItems() {
-      const regEx = new RegExp(this.searchQuery, 'i');
-      return this.items.filter(item => regEx.test(item.name));
-    },
-    cartTotal() {
-      return this.cart.reduce((acc, cur) => acc + cur.quantity * cur.price, 0);
-    }
   },
   methods: {
     handleBuyClick(item) {
@@ -463,6 +467,7 @@ const app = new Vue({
       }
     },
 
+    // Метод для очистки корзины. Не работает в json-server
     handleEmptyCartClick() {
       fetch(API_URL + '/cart', {
         method: 'PUT',
@@ -499,6 +504,7 @@ const app = new Vue({
           });
       }
     },
+
     handleOnApproveReview(reviewItem) {
       const itemIdx = this.reviews.findIndex(el => el.id === reviewItem.id);
       Vue.set(this.reviews, itemIdx, reviewItem);
