@@ -2,14 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <div class="mainWrapper"  id='app'>
+    <div class="mainWrapper" id="app">
       <header class="header container">
         <a href="#">
           <div class="headerLogo">
@@ -174,89 +175,9 @@
         </ul>
       </nav>
 
-      <div class="topBanner">
-        <div class="titleWrapper container">
-          <h1>THE BRAND</h1>
-          <h2>OF LUXERIOUS <span>FASHION</span></h2>
-        </div>
-      </div>
-
-      <div class="offers container">
-        <div class="offer offersForMen">
-          <a href="#">
-            <div class="badge">
-              <h3>HOT DEAL</h3>
-              <h4>FOR MEN</h4>
-            </div>
-          </a>
-        </div>
-        <div class="offer offersAccesories">
-          <a href="#">
-            <div class="badge">
-              <h3>LUXIROUS &amp; TRENDY</h3>
-              <h4>ACCESORIES</h4>
-            </div>
-          </a>
-        </div>
-        <div class="offer offersWomen">
-          <a href="#">
-            <div class="badge">
-              <h3>30% OFFER</h3>
-              <h4>WOMEN</h4>
-            </div>
-          </a>
-        </div>
-        <div class="offer offersForKids">
-          <a href="#">
-            <div class="badge">
-              <h3>NEW ARRIVALS</h3>
-              <h4>FOR KIDS</h4>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="featured container">
-        <h2>Featured Items</h2>
-        <h5>Shop for items based on what we featured in this week</h5>
-
-        <featured-products :items="items" @onbuy="handleBuyClick"></featured-products>
-
-        <button class="featuredBrowseAll" type="button" name="button">
-          Browse All Product
-          &nbsp;
-          <i class="fas fa-long-arrow-alt-right"></i>
-        </button>
-      </div>
-
-      <div class="special container">
-        <a href="#">
-          <div class="specialTitle">
-            <h2>30% <span>OFFER</span></h2>
-            <h3>FOR WOMEN</h3>
-          </div>
-        </a>
-        <div class="specialText">
-          <div class="specialTextBlock">
-            <h3>Free Delivery</h3>
-            <p>
-              Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.
-            </p>
-          </div>
-          <div class="specialTextBlock">
-            <h3>Sales & discounts</h3>
-            <p>
-              Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.
-            </p>
-          </div>
-          <div class="specialTextBlock">
-            <h3>Quality assurance</h3>
-            <p>
-              Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.
-            </p>
-          </div>
-        </div>
-      </div>
+      <main>
+        <moderate-reviews :reviews="reviews" @onapprove="handleOnApproveReview" @ondelete="handleOnDeleteReview"></moderate-reviews>
+      </main>
     </div>
 
     <div class="footerWrapper">

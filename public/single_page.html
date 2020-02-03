@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <div class="mainWrapper">
+    <div class="mainWrapper" id="app">
       <header class="header container">
         <a href="#">
           <div class="headerLogo">
@@ -224,89 +224,11 @@
           </button>
         </div>
 
+        <review :reviews="reviews"></review>
+
         <div class="singlePageAlsoLike container">
           <h3>YOU MAY ALSO LIKE</h3>
-          <div class="alsoLikeFlexContainer">
-            <div class="alsoLikeFlexChild">
-              <img src="img/alsoLikeProduct1.jpg" alt="product1">
-              <div class="alsoLikeProductHover">
-                <button type="button" name="button">
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-              <div class="alsoLikeProductText">
-                <h3 class="alsoLikeProductName">BLAZE LEGGINGS</h3>
-                <h3 class="alsoLikeProductPrice">$52.00</h3>
-                <h6>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </h6>
-              </div>
-            </div>
-
-            <div class="alsoLikeFlexChild">
-              <img src="img/alsoLikeProduct2.jpg" alt="product1">
-              <div class="alsoLikeProductHover">
-                <button type="button" name="button">
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-              <div class="alsoLikeProductText">
-                <h3 class="alsoLikeProductName">ALEXA SWEATER</h3>
-                <h3 class="alsoLikeProductPrice">$52.00</h3>
-                <h6>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </h6>
-              </div>
-            </div>
-
-            <div class="alsoLikeFlexChild">
-              <img src="img/alsoLikeProduct3.jpg" alt="product1">
-              <div class="alsoLikeProductHover">
-                <button type="button" name="button">
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-              <div class="alsoLikeProductText">
-                <h3 class="alsoLikeProductName">AGNES TOP</h3>
-                <h3 class="alsoLikeProductPrice">$52.00</h3>
-                <h6>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </h6>
-              </div>
-            </div>
-
-            <div class="alsoLikeFlexChild">
-              <img src="img/alsoLikeProduct4.jpg" alt="product1">
-              <div class="alsoLikeProductHover">
-                <button type="button" name="button">
-                  <span>Add to Cart</span>
-                </button>
-              </div>
-              <div class="alsoLikeProductText">
-                <h3 class="alsoLikeProductName">SYLVA SWEATER</h3>
-                <h3 class="alsoLikeProductPrice">$52.00</h3>
-                <h6>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </h6>
-              </div>
-            </div>
-          </div>
+          <also-like-items :items="items" name_of_item="Shirt 1" @onbuy="handleBuyClick"></also-like-items>
         </div>
       </main>
     </div>
@@ -425,5 +347,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="scripts/script.js" charset="utf-8"></script>
   </body>
 </html>

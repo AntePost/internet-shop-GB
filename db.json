@@ -1,1 +1,91 @@
-{}
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Shirt",
+      "price": 10,
+      "featured": true
+    },
+    {
+      "id": 2,
+      "name": "Socks",
+      "price": 20,
+      "featured": true
+    },
+    {
+      "id": 3,
+      "name": "Jacket",
+      "price": 30,
+      "featured": true
+    },
+    {
+      "id": 4,
+      "name": "Shoes",
+      "price": 40,
+      "featured": true
+    },
+    {
+      "id": 5,
+      "name": "Shirt 2",
+      "price": 50,
+      "featured": true
+    },
+    {
+      "id": 6,
+      "name": "Socks 2",
+      "price": 60,
+      "featured": true
+    },
+    {
+      "id": 7,
+      "name": "Jacket 2",
+      "price": 70,
+      "featured": true
+    },
+    {
+      "id": 8,
+      "name": "Shoes 2",
+      "price": 80,
+      "featured": true
+    },
+    {
+      "id": 9,
+      "name": "Shirt 3",
+      "price": 90,
+      "featured": false
+    },
+    {
+      "id": 10,
+      "name": "Shirt 4",
+      "price": 100,
+      "featured": false
+    }
+  ],
+  "cart": [],
+  "reviews": [
+    {
+      "id": 1,
+      "author": "John",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "approved": true
+    },
+    {
+      "id": 2,
+      "author": "Jack",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "approved": true
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "username": "John",
+      "password": "12345"
+    },
+    {
+      "id": 1,
+      "username": "Jack",
+      "password": "54321"
+    }
+  ]
+}
